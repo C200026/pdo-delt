@@ -1,5 +1,6 @@
 <?php
   session_start();
+  require_once("functions.php");
 
   $name = $_POST['name'];
   $email = $_POST['email'];
