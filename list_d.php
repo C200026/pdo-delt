@@ -94,7 +94,7 @@ try{
            }
         ?>
     </td>
-    <td>
+    <td style="text-align: center;">
         <?php echo "<input type='radio' name='delete' value='".$row['id']."'>";?>
     </td>
     </tr>
