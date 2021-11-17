@@ -74,7 +74,7 @@ try{
 <p><?php echo $count;?>件表示</p>
 
 <div class="container">
-<form action="edit.php" method="POST">
+<form action="confirm_d.php" method="POST">
 
 <table border=1>
     <tr><th>id</th><th>名前</th><th>メールアドレス</th><th>性別</th><th>削除対象</th></tr>
