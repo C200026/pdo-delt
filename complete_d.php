@@ -3,12 +3,19 @@
   require_once("functions.php");
 
   $delete = $_SESSION['delete'];
-  $name = $_SESSION['name'];
-  $email = $_SESSION['email'];
-  $gender = $_SESSION['gender'];
 
 $dbh = db_conn();      // データベース接続
 try{
+    $sql = "SELECT * FROM user WHERE id = :id";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':id', $delete, PDO::PARAM_STR);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $id = $row[id];
+    $name = $row[name];
+    $email = $row[email];
+    $gender = $row[gender];
+    
     $sql = "DELETE FROM user WHERE id = :id";  //プレースホルダ
     $stmt = $dbh->prepare($sql);                           //クエリの実行準備
     $stmt->bindValue(':id', $delete, PDO::PARAM_INT);      //バインド:プレースホルダーを埋める
@@ -37,12 +44,13 @@ try{
     </header>
 </div>
 <hr>
-<p>名前は <?php echo $name;?> さん</p>
+<p>ＩDは <?php echo $id;?> </p>
+<p>名前は <?php echo $name;?> </p>
 <p>メールアドレスは <?php echo $email;?> </p>
 
-<p>性別は <?php if( $gender === "1" ){ echo '男性'; }
-		elseif( $gender === "2" ){ echo '女性'; }
-		elseif( $gender === "9" ){ echo 'その他'; }
+<p>性別は <?php if( $gender === 1 ){ echo '男性'; }
+		elseif( $gender === 2 ){ echo '女性'; }
+		elseif( $gender === 9 ){ echo 'その他'; }
 ?> </p>
 <p>以上のデータを削除しました。</p>
 <?php  /* セッション変数クリア */
