@@ -2,14 +2,7 @@
   session_start();
   require_once("functions.php");
 
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $gender = $_POST['gender'];
   $delete = $_POST['delete'];
-  
-  $_SESSION['name'] = $_POST['name'];
-  $_SESSION['email'] = $_POST['email'];
-  $_SESSION['gender'] = $_POST['gender'];
   $_SESSION['delete'] = $_POST['delete'];
 
   $dbh = db_conn();
@@ -47,19 +40,21 @@
 <hr>
 
 <div class="form-group">
-    <label for="name"><span>お名前</span></label>
-    <p><?php echo $row[name];?></p>
+    <label for="name"><span>ＩD：</span></label>
+    <?php echo $row[id];?>
 </div>
 <div class="form-group">
-    <label for="email"><span>メールアドレス</span></label>
-    <p><?php echo $row[email];?></p>
+    <label for="name"><span>お名前：</span></label>
+    <?php echo $row[name];?>
 </div>
 <div class="form-group">
-    <label><span>性別</span></label>
+    <label for="email"><span>メールアドレス：</span></label>
+    <?php echo $row[email];?>
+</div>
+<div class="form-group">
+    <label><span>性別：</span></label>
 
-    <div>
     <?php
-          echo "<label class='radio-inline'>";
           if( $row[gender] === 1 ) {
              echo "男性";
           } elseif( $row[gender] === 2 ) {
@@ -67,9 +62,7 @@
           } elseif( $row[gender] === 9 ) {
              echo "その他";
           }
-          echo "</label>";
    ?>
-    </div>
 
 </div>
 
