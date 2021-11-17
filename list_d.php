@@ -103,7 +103,7 @@ try{
 <p style="margin:8px;">
 <p>編集するデータを選択してください</p>
 <div class="button-wrapper">
-    <button type="button" onclick="location.href='search_u.php'">戻る</button>
+    <button type="button" onclick="location.href='search_d.php'">戻る</button>
     <button type="submit" class="btn btn--naby btn--shadow">編集する</button>
 </div>
 </form>
