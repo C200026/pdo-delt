@@ -2,6 +2,21 @@
   session_start();
   require_once("functions.php");
 
+  if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if(isset($_POST["delete"])){
+       if(! empty($_POST["delete"] )) {
+          $edit = $_POST["delete"];
+          $_SESSION["delete"] = $_POST["delete"];
+       } else {
+           echo "delete が空エラー";
+       }
+    } else {
+        echo "削除するデータを選択してください\n";
+    }
+} else {
+  $delete = $_SESSION["delete"];
+}
+
   $delete = $_POST['delete'];
   $_SESSION['delete'] = $_POST['delete'];
 
