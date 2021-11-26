@@ -95,7 +95,7 @@ try{
         ?>
     </td>
     <td style="text-align: center;">
-        <?php echo "<input type='radio' name='delete' value='".$row['id']."'>";?>
+        <?php echo "<input type='radio' name='delete' value='".$row['id']."'required>";?>
     </td>
     </tr>
     <?php endforeach; ?>
